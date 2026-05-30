@@ -14,8 +14,7 @@ Repositório dedicado ao tratamento, documentação e estudo de dados acadêmico
   - Versão vetorizada ou finalizada da base de dados para uso em modelos e análises.
 - `DOCUMENTACAO_BASES.md`
   - Documentação detalhada do pipeline de preparação, tratamentos aplicados e estrutura dos dados.
-- `LICENSE`
-  - Termos de licenciamento do repositório.
+
 
 ## Objetivo
 
@@ -56,4 +55,4 @@ print(df.head())
 
 - Os IDs dos discentes estão anonimizados.
 - A documentação em `DOCUMENTACAO_BASES.md` explica o cálculo do semestre cronológico, o tratamento de equivalências e as métricas acumuladas.
-- Caso queira estender o repositório, adicione scripts de processamento e notebooks de análise para documentar o fluxo de trabalho.
+
