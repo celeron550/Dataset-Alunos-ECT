@@ -460,15 +460,16 @@ Para cada aluno e cada semestre, o status de uma disciplina canônica é resolvi
 | Clustering de perfis de alunos | `base_flat_por_aluno.csv` | — | Remova os targets antes de clusterizar |
 | Modelos sequenciais (LSTM, GRU) | `base_sequencial_por_semestre.csv` | `status_curso_encoded` | Ordene por `semestre_cronologico` dentro do grupo |
 
-### Separação treino / teste recomendada
+### Separação recomendada
 
 Para evitar problemas de incompatibilidade de grades curriculares, separe por ano de ingresso em vez de aleatoriamente:
 
 ```python
 # Alunos que ingressaram entre 2015 e 2024
 
-test  = df[df["ano_ingresso"] >= 2015]
-train = df[df["ano_ingresso"] < 2024]
+df = df[df["ano_ingresso"] >= 2015]
+df = df[df["ano_ingresso"] < 2024]
+
 ```
 
 ---
