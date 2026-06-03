@@ -18,8 +18,8 @@ import pandas as pd
 import numpy as np
 import os
 
-IN_PATH  = "/mnt/user-data/outputs/base_discentes_semestre_ml.csv"
-OUT_DIR  = "/mnt/user-data/outputs"
+IN_PATH  = "./outputs/base_discentes_semestre_ml.csv"
+OUT_DIR  = "./outputs"
 os.makedirs(OUT_DIR, exist_ok=True)
 
 print("Carregando base sequencial...")
