@@ -18,8 +18,8 @@ import pandas as pd
 import numpy as np
 import os
 
-IN_PATH  = "./base_discentes_semestre_ml.csv"
-OUT_DIR  = "./output"
+IN_PATH  = "/mnt/user-data/outputs/base_discentes_semestre_ml.csv"
+OUT_DIR  = "/mnt/user-data/outputs"
 os.makedirs(OUT_DIR, exist_ok=True)
 
 print("Carregando base sequencial...")
@@ -40,8 +40,8 @@ FIXED_FEATURES = [
     "possui_auxilio_alimentacao",
     "possui_auxilio_transporte",
     "possui_auxilio_residencia_moradia",
-    "ano_ingresso",
-    "periodo_ingresso",
+    # ano_ingresso e periodo_ingresso vem do target_df (via groupby),
+    # nao do fixed_df, para evitar colunas duplicadas no merge.
 ]
 
 # Features que variam por semestre (performance acumulada + estado das disciplinas)
@@ -183,7 +183,9 @@ id_and_target = [
     "id_discente", "ano_ingresso", "periodo_ingresso",
     "concluiu", "semestres_para_concluir"
 ]
-s_cols = sorted([c for c in base_flat.columns if c.startswith("s") and "_" in c])
+# Filtra apenas colunas de pivot (padrão s{n}_feature, onde n é um dígito)
+s_cols = sorted([c for c in base_flat.columns
+                 if len(c) > 2 and c[0] == "s" and c[1].isdigit() and c[2] == "_"])
 final_cols = id_and_target + FIXED_FEATURES + s_cols
 final_cols = [c for c in final_cols if c in base_flat.columns]
 base_flat = base_flat[final_cols].reset_index(drop=True)
